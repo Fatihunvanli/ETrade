@@ -1,0 +1,272 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E Ticaret</title>
+
+    <!-- FAVICON -->
+    <link href="img/favicon.png" rel="shortcut icon">
+    <!-- PLUGINS CSS STYLE -->
+    <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/Content/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/plugins/bootstrap/bootstrap-slider.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link href="Content/plugins/font-awesome/font-awesome.min.css" rel="stylesheet">*@
+    <!-- Owl Carousel -->
+    <link href="/Content/plugins/slick-carousel/slick.css" rel="stylesheet">
+    <link href="/Content/plugins/slick-carousel/slick-theme.css" rel="stylesheet">
+    <!-- Fancy Box -->
+    <link href="/Content/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+    <link href="/Content/plugins/jquery-nice-select/nice-select.css" rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link href="/Content/style.css" rel="stylesheet">
+    
+    <!-- MDB -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css"
+        rel="stylesheet"
+    />
+
+</head>
+
+<body class="body-wrapper">
+
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ürün Silme</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-mdb-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">Ürünü gerçekten silmek istiyor musun ?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">
+                    İptal
+                </button>
+                <a id="deleteProduct" type="button" class="btn btn-danger" href="">Ürünü Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light navigation">
+                    <a class="navbar-brand" href="/Home/Index">
+                        <img src="~/Content/img/logo.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto main-nav ">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Home/Index">Anasayfa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Product/ProductManager">
+                                    Ürün Yönetimi
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto mt-10">
+                            <li class="nav-item">
+                                <a class="nav-link text-white add-button" href="/Product/ProductAdd"><i class="fa fa-plus-circle"></i> Ürün Ekle</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-search">
+</section>
+    
+    @if(TempData["Success"] != null) {
+        <div class="container">
+            <div class="alert alert-success">
+                <strong>@TempData["Success"]</strong>
+            </div>
+        </div>
+    }
+    @if(TempData["Danger"] != null) {
+        <div class="container">
+            <div class="alert alert-danger">
+                <strong>@TempData["Danger"]</strong>
+            </div>
+        </div>
+    }
+@RenderBody()
+
+<footer class="footer section section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
+                <div class="block about">
+                    <img src="/Content/img/logo.png" alt="">
+                    <p class="alt-color">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3">
+                <div class="block">
+                    <h4>Site Pages</h4>
+                    <ul>
+                        <li><a href="#">Boston</a></li>
+                        <li><a href="#">How It works</a></li>
+                        <li><a href="#">Deals & Coupons</a></li>
+                        <li><a href="#">Articls & Tips</a></li>
+                        <li><a href="terms-condition.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
+                <div class="block">
+                    <h4>Admin Pages</h4>
+                    <ul>
+                        <li><a href="category.html">Category</a></li>
+                        <li><a href="single.html">Single Page</a></li>
+                        <li><a href="store.html">Store Single</a></li>
+                        <li>
+                            <a href="single-blog.html">Single Post</a>
+                        </li>
+                        <li><a href="blog.html">Blog</a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-7">
+                <div class="block-2 app-promotion">
+                    <div class="mobile d-flex">
+                        <a href="">
+                            <img src="/Content/img/logo.png" alt="mobile-icon">
+                        </a>
+                        <p>Get the Dealsy Mobile App and Save more</p>
+                    </div>
+                    <div class="download-btn d-flex my-3">
+                        <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
+                        <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-12">
+                <div class="copyright">
+                    <p>
+                        Copyright ©
+                        <script>
+                            var CurrentYear = new Date().getFullYear()
+                            document.write(CurrentYear)
+                        </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-12">
+                <ul class="social-media-icons text-right">
+                    <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
+                    <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
+                    <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
+                    <li><a class="fa fa-vimeo" href=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="top-to">
+        <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+</footer>
+
+<!-- JAVASCRIPTS -->
+@*<script src="Scripts/plugins/jQuery/jquery.min.js"></script>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/Scripts/plugins/bootstrap/popper.min.js"></script>
+<script src="/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="/Scripts/plugins/bootstrap/bootstrap-slider.js"></script>
+<!-- tether js -->
+<script src="/Scripts/plugins/tether/tether.min.js"></script>
+<script src="/Scripts/plugins/raty/jquery.raty-fa.js"></script>
+<script src="/Scripts/plugins/slick-carousel/slick.min.js"></script>
+<script src="/Scripts/plugins/jquery-nice-select/jquery.nice-select.min.js"></script>
+<script src="/Scripts/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/Scripts/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<!-- google map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+<script src="/Scripts/plugins/google-map/gmap.js"></script>
+<script src="/Scripts/script.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".categoryListItem").click(function() {
+            var categoryId = $(this).children().attr("datavalue");
+            $.ajax({
+                type: 'POST',
+                url: '/Product/Index/',
+                data: { category: categoryId },
+                dataType: 'html',
+                success: function(data) {
+                    $("#productList").html(data);
+                }
+            });
+
+            var category = $(this).children().attr("datacategory");
+
+            $('#categoryName').html('<h2 id="categoryName">' + category + '</h2>');
+        });
+
+        $(".prodct-list-item").click(function () {
+            var productId = $(this).children().attr("productId");
+
+            $('#deleteProduct').attr("href", "/Product/ProductDelete/" + productId);
+        });
+    });
+</script>
+
+
+
+</body>
+
+</html>
+
+
+
+

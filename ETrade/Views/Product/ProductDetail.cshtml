@@ -1,0 +1,44 @@
+﻿@model ETrade.Models.Product
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-search">
+</section>
+<section class="section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="ad-listing-list mt-20">
+                    <div class="row p-lg-3 p-sm-5 p-4">
+                        <div class="col-lg-4 align-self-center">
+                            <a href="#">
+                                <img src="~/Content/img/@Model.ProductPicture" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-10">
+                                    <div class="ad-listing-content">
+                                        <div>
+                                            <a href="#" class="font-weight-bold">@Model.ProductName</a>
+                                        </div>
+                                        <ul class="list-inline mt-2 mb-3">
+                                            <li class="list-inline-item"><a href="#"> <i class="fa fa-folder-open-o"></i> @Model.Category.CategoryName</a></li>
+                                            <li class="list-inline-item"><a href=""></a></li>
+                                        </ul>
+                                        <p class="pr-5"><b>Açıklama: </b>@Model.ProductDescription</p>
+                                        <p class="pr-5"><b>Fiyatı: </b>@Model.StockCount TL</p>
+                                        <p class="pr-5"><b>Stok Adedi: </b>@Model.StockCount</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

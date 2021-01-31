@@ -1,0 +1,106 @@
+﻿@using ETrade.Models
+@model ETrade.Models.Product
+@{
+    ViewBag.Title = "ProductEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var categoryListItem = ViewBag.Cat as List<SelectListItem>;
+}
+
+<section class="user-profile section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-1 col-lg-12 offset-lg-0">
+                <div class="widget welcome-message">
+                    <h2>Ürün bilgilerini düzenle</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="widget personal-info">
+                            <h3 class="widget-header user">@Model.Category.CategoryName</h3>
+                            @using (Html.BeginForm("ProductEdit","Product",FormMethod.Post, new { enctype = "multipart/form-data"}))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("CategoryId", categoryListItem, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ProductName, "Ürün Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ProductDescription, "Ürün Açıklaması", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ProductPicture,"Ürün Resim", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ProductPicture, new { htmlAttributes = new { @class = "form-control", disabled = "true" } })
+                                            @Html.ValidationMessageFor(model => model.ProductPicture, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="hidden" name="ProductPicture" value="@Model.ProductPicture"/>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <img src="/Content/img/@Model.ProductPicture" alt="@Model.ProductPicture" class="img-thumbnail">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <input type="file" name="file" id="file" class="button" accept=".jpg, .jpeg, .png" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UnitPrice, "Ürün Fiyatı", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.StockCount, "Stok Miktarı", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.StockCount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.StockCount, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input id="saveButton" type="submit" value="Kaydet" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

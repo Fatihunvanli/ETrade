@@ -1,0 +1,45 @@
+﻿@model ETrade.Models.ViewModels.ProductListViewModel
+
+@if (Model.Products.Count == 0)
+{
+    <div class="row container">
+        <h2>Bu kategoride ürün bulunmamaktadır.</h2>
+    </div>
+}
+else
+{
+    <div class="row mt-30">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-sm-12 col-lg-4 col-md-6">
+                <div class="product-item bg-light">
+                    <div class="card">
+                        <div class="thumb-content">
+                            <a href="/Product/ProductDetail/@product.Id">
+                                <img class="card-img-top img-fluid" src="/Content/img/@product.ProductPicture" alt="İmage">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="/Product/ProductDetail/@product.Id">@product.ProductName</a></h4>
+                            <ul class="list-inline product-meta">
+                                <li class="list-inline-item">
+                                    <a href="/Product/ProductDetail/@product.Id"><i class="fa fa-folder-open-o"></i>@product.Category.CategoryName</a>
+                                </li>
+                            </ul>
+                            <p class="card-text">@product.ProductDescription</p>
+                            <div class="product-ratings">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

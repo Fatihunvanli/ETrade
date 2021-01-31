@@ -1,0 +1,74 @@
+﻿@model ETrade.Models.ViewModels.ProductListViewModel
+@{
+    ViewBag.Title = "ProductManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="dashboard section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-1 col-lg-12 offset-lg-0">
+                <div class="widget dashboard-container my-adslist">
+
+                    <table class="table table-responsive product-dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Görsel</th>
+                                <th>Ürün Bilgileri</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Özellikler</th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model.Products)
+                            {
+                                <tr>
+                                    <td class="product-thumb">
+                                        <img width="80px" height="auto" src="/Content/img/@product.ProductPicture" alt="İmage">
+                                    </td>
+                                    <td class="product-details">
+                                        <h3 class="title">@product.ProductName</h3>
+                                        <span class="add-id"><strong>Açıklama:</strong> @product.ProductDescription</span>
+                                        <span><strong>Ürün Fiyatı: </strong><time>@product.UnitPrice</time> </span>
+                                        <span class="status active"><strong>Stok Miktarı:</strong><b>@product.StockCount</b></span>
+                                    </td>
+                                    <td class="product-category"><span class="categories">@product.Category.CategoryName</span></td>
+                                    <td class="action" data-title="Action">
+                                        <div class="">
+                                            <ul class="list-inline justify-content-center">
+                                                <li class="list-inline-item">
+                                                    <a data-toggle="tooltip" data-placement="top" title="Görüntüle" class="view" href="/Product/ProductDetail/@product.Id">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a class="edit" data-toggle="tooltip" data-placement="top" title="Düzenle" href="/Product/ProductEdit/@product.Id">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item prodct-list-item">
+                                                    <a class="delete" data-mdb-toggle="modal" data-mdb-target="#exampleModal" productId="@product.Id" data-placement="top" title="Sil" href="#">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
